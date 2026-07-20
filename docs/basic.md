@@ -17,10 +17,10 @@ title: คำสั่งพื้นฐาน
 
 ผลลัพธ์:
 ```
-🤖 GB Oracle
-📍 Location: gb-oracle
-🎯 Role: Worker
-👤 Human: Axe
+🤖 Oracle — Your AI Companion
+📍 Status: Active & Learning
+🎯 Purpose: Remember, Analyze, Support
+👤 Human: [Your Name]
 ```
 
 ### `/learn` — เรียนรู้

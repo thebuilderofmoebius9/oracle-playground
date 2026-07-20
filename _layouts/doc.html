@@ -28,48 +28,159 @@ layout: default
     margin: 0 auto;
     padding: 20px;
   }
+
   .sidebar {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 15, 26, 0.9) 100%);
+    padding: 25px;
+    border-radius: 12px;
     height: fit-content;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    position: sticky;
+    top: 100px;
   }
+
+  .sidebar h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
   .sidebar ul {
     list-style: none;
     padding: 0;
   }
+
   .sidebar li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
+
   .sidebar a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    color: white;
+    background: rgba(102, 126, 234, 0.2);
+  }
+
+  .content {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .content h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    margin-bottom: 25px;
+  }
+
+  .content h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #667eea;
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+
+  .content h3 {
+    color: #a78bfa;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .content p {
+    margin-bottom: 15px;
+  }
+
+  .content a {
     color: #667eea;
     text-decoration: none;
   }
-  .sidebar a:hover {
+
+  .content a:hover {
     text-decoration: underline;
   }
-  .content {
-    line-height: 1.8;
+
+  .content ul, .content ol {
+    margin-bottom: 20px;
   }
+
+  .content li {
+    margin-bottom: 8px;
+  }
+
+  .content strong {
+    color: #a78bfa;
+  }
+
   pre {
-    background: #1a1a2e;
-    color: #eee;
-    padding: 15px;
-    border-radius: 6px;
+    background: #0f0f1a;
+    color: #4ade80;
+    padding: 20px;
+    border-radius: 8px;
     overflow-x: auto;
+    border: 1px solid rgba(74, 222, 128, 0.2);
   }
+
   code {
-    background: #f0f0f0;
-    padding: 2px 6px;
-    border-radius: 3px;
+    background: rgba(102, 126, 234, 0.2);
+    color: #a78bfa;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Consolas, Monaco, monospace';
   }
+
   pre code {
     background: transparent;
+    color: #4ade80;
     padding: 0;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(26, 26, 46, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  }
+
+  table th {
+    background: rgba(102, 126, 234, 0.2);
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+  }
+
+  table tr:hover {
+    background: rgba(102, 126, 234, 0.1);
+  }
+
+  blockquote {
+    border-left: 4px solid #667eea;
+    padding-left: 20px;
+    margin: 20px 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+  }
+
   @media (max-width: 768px) {
     .doc-layout {
       grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
     }
   }
 </style>

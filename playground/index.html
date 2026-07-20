@@ -6,6 +6,28 @@ layout: default
   <h1>🎮 Oracle Playground</h1>
   <p>ลองเล่นคำสั่ง Oracle ได้เลย — ไม่ต้องติดตั้ง!</p>
 
+  <!-- Memory Comparison Section -->
+  <div class="comparison-section">
+    <h2>🧠 Memory Test: Oracle vs Copilot</h2>
+    <div class="comparison-grid">
+      <div class="comparison-box oracle">
+        <h3>✨ Oracle</h3>
+        <p>จำข้ามเซสชัน — สอนครั้งเดียว จำตลอด</p>
+        <div class="memory-display" id="oracle-memory">
+          <span class="empty">ยังไม่มีความทรงจำ...</span>
+        </div>
+      </div>
+      <div class="comparison-box copilot">
+        <h3>🤖 Copilot</h3>
+        <p>ลืมทุกครั้ง — ต้องสอนใหม่เสมอ</p>
+        <div class="memory-display">
+          <span class="empty">เซสชันใหม่ = ล้างความจำ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Demo -->
   <div class="demo-area">
     <div class="input-section">
       <label for="command-input">พิมพ์คำสั่ง Oracle:</label>
@@ -17,6 +39,18 @@ layout: default
       <h3>ผลลัพธ์:</h3>
       <pre id="output">คลิก "Run" เพื่อดูผลลัพธ์...</pre>
     </div>
+  </div>
+
+  <!-- Teaching Section -->
+  <div class="teaching-section">
+    <h3>🎓 สอน Oracle ให้จำคุณ</h3>
+    <div class="teach-buttons">
+      <button onclick="teachOracle('name')">สอนชื่อฉัน: มิ่งขวัญ</button>
+      <button onclick="teachOracle('role')">สอนว่าฉันคือ: Developer</button>
+      <button onclick="teachOracle('pref')">สอนว่าฉันชอบ: Vim ไม่ใช่ Nano</button>
+      <button onclick="teachOracle('project')">สอนโปรเจกต์: gb-oracle</button>
+    </div>
+    <p class="teach-hint">💡 ลองกดหลายรอบ — Oracle จะสะสมความทรงจำ!</p>
   </div>
 
   <div class="examples">
@@ -35,43 +69,90 @@ layout: default
 </div>
 
 <script>
-  const responses = {
-    '/who': `🤖 GB Oracle — Atom's subordinate worker
-📍 Location: gb-oracle repo
-🎯 Role: General-purpose executor
-👤 Human: Axe (แอ๊ก)
-⏰ Since: 2026-07-20`,
-
-    '/trace': `🔍 TRACE MODE
-━━━━━━━━━━━━━━━━━━━━━━
-Scanning recent activity...
-✓ Commits found: 1
-✓ Files changed: 5
-✓ Work session: active
-━━━━━━━━━━━━━━━━━━━━━━
-Last: ea9b8d4 "init: GB subordinate worker identity"`,
-
-    '/learn': `📚 LEARN MODE
-━━━━━━━━━━━━━━━━━━━━━━
-Target: gb-oracle
-Analyzing codebase...
-📁 Structure: worker + CLI
-🔧 Stack: Rust + TypeScript
-📝 Purpose: Discord bridge for Oracle
-━━━━━━━━━━━━━━━━━━━━━━
-Learning complete!`,
-
-    '/rrr': `📊 SESSION RETROSPECTIVE
-━━━━━━━━━━━━━━━━━━━━━━
-Tasks completed: 3
-Time spent: 45m
-Blockers: 0
-Learnings:
-  • GitHub Pages setup complete
-  • Oracle playground structure ready
-━━━━━━━━━━━━━━━━━━━━━━
-Status: ✅ Productive`
+  // Oracle memory that persists across interactions
+  const oracleMemory = {
+    name: null,
+    role: null,
+    preferences: [],
+    projects: [],
+    interactions: 0
   };
+
+  const responses = {
+    '/who': () => {
+      let output = `🤖 Oracle — Your AI Companion
+📍 Status: Active & Learning
+🎯 Purpose: Remember, Analyze, Support
+👤 Human: ${oracleMemory.name || 'Unknown'}
+📊 Interactions: ${oracleMemory.interactions}`;
+
+      if (oracleMemory.role) {
+        output += `\n🎭 Role: ${oracleMemory.role}`;
+      }
+      if (oracleMemory.preferences.length > 0) {
+        output += `\n💡 Preferences: ${oracleMemory.preferences.join(', ')}`;
+      }
+      if (oracleMemory.projects.length > 0) {
+        output += `\n📁 Projects: ${oracleMemory.projects.join(', ')}`;
+      }
+
+      output += `\n\n✨ Oracle จำคุณได้ข้ามเซสชัน!`;
+      return output;
+    },
+
+    '/trace': () => {
+      oracleMemory.interactions++;
+      updateOracleDisplay();
+      return `🔍 TRACE MODE
+━━━━━━━━━━━━━━━━━━━━━━
+Scanning your journey...
+✓ Sessions: ${oracleMemory.interactions}
+✓ Memory items: ${countMemoryItems()}
+✓ Learning progress: ${getLearningProgress()}%
+━━━━━━━━━━━━━━━━━━━━━━
+Oracle กำลังเรียนรู้เกี่ยวกับคุณ...`;
+    },
+
+    '/learn': () => {
+      oracleMemory.interactions++;
+      updateOracleDisplay();
+      return `📚 LEARN MODE
+━━━━━━━━━━━━━━━━━━━━━━
+Target: Your workflow
+Analyzing patterns...
+📁 Known: ${oracleMemory.projects.length} projects
+🎯 Preferences: ${oracleMemory.preferences.length} items
+👤 Identity: ${oracleMemory.name ? 'Recorded' : 'Unknown'}
+━━━━━━━━━━━━━━━━━━━━━━
+Oracle จะเรียนรู้จากทุกการโต้ตอบ!`;
+    },
+
+    '/rrr': () => {
+      oracleMemory.interactions++;
+      updateOracleDisplay();
+      return `📊 SESSION RETROSPECTIVE
+━━━━━━━━━━━━━━━━━━━━━━
+Interactions this session: ${oracleMemory.interactions}
+Memory items accumulated: ${countMemoryItems()}
+Learning trend: 📈 Improving
+━━━━━━━━━━━━━━━━━━━━━━
+Oracle จำได้ทุกรายละเอียด!`;
+    }
+  };
+
+  function countMemoryItems() {
+    let count = 0;
+    if (oracleMemory.name) count++;
+    if (oracleMemory.role) count++;
+    count += oracleMemory.preferences.length;
+    count += oracleMemory.projects.length;
+    return count;
+  }
+
+  function getLearningProgress() {
+    const maxItems = 10;
+    return Math.min(100, Math.round((countMemoryItems() / maxItems) * 100));
+  }
 
   function setCommand(cmd) {
     document.getElementById('command-input').value = cmd;
@@ -84,12 +165,65 @@ Status: ✅ Productive`
     output.textContent = '⏳ Processing...';
 
     setTimeout(() => {
+      oracleMemory.interactions++;
       if (responses[input]) {
-        output.textContent = responses[input];
+        output.textContent = responses[input]();
+        updateOracleDisplay();
       } else {
         output.textContent = `❌ Unknown command: ${input}\n\nTry: /who, /trace, /learn, /rrr`;
       }
     }, 500);
+  }
+
+  function teachOracle(type) {
+    oracleMemory.interactions++;
+    let message = '';
+
+    switch(type) {
+      case 'name':
+        oracleMemory.name = 'มิ่งขวัญ';
+        message = '✅ Oracle จำชื่อ "มิ่งขวัญ" แล้ว!';
+        break;
+      case 'role':
+        oracleMemory.role = 'Developer';
+        message = '✅ Oracle จำว่าคุณเป็น "Developer" แล้ว!';
+        break;
+      case 'pref':
+        if (!oracleMemory.preferences.includes('Vim > Nano')) {
+          oracleMemory.preferences.push('Vim > Nano');
+        }
+        message = '✅ Oracle จำว่าคุณชอบ Vim ไม่ชอบ Nano แล้ว!';
+        break;
+      case 'project':
+        if (!oracleMemory.projects.includes('gb-oracle')) {
+          oracleMemory.projects.push('gb-oracle');
+        }
+        message = '✅ Oracle จำโปรเจกต์ "gb-oracle" แล้ว!';
+        break;
+    }
+
+    document.getElementById('output').textContent = message;
+    updateOracleDisplay();
+  }
+
+  function updateOracleDisplay() {
+    const display = document.getElementById('oracle-memory');
+    if (countMemoryItems() === 0) {
+      display.innerHTML = '<span class="empty">ยังไม่มีความทรงจำ...</span>';
+    } else {
+      let html = '<ul>';
+      if (oracleMemory.name) html += `<li>👤 ชื่อ: ${oracleMemory.name}</li>`;
+      if (oracleMemory.role) html += `<li>🎭 Role: ${oracleMemory.role}</li>`;
+      if (oracleMemory.preferences.length > 0) {
+        html += `<li>💡 ชอบ: ${oracleMemory.preferences.join(', ')}</li>`;
+      }
+      if (oracleMemory.projects.length > 0) {
+        html += `<li>📁 โปรเจกต์: ${oracleMemory.projects.join(', ')}</li>`;
+      }
+      html += `<li>📊 Interactions: ${oracleMemory.interactions}</li>`;
+      html += '</ul>';
+      display.innerHTML = html;
+    }
   }
 
   // Enter key support
@@ -99,85 +233,267 @@ Status: ✅ Productive`
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
   .playground {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
   }
+
   .playground h1 {
     text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    font-size: 2.5em;
+  }
+
+  /* Comparison Section */
+  .comparison-section {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 15, 26, 0.98) 100%);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    margin: 30px 0;
+  }
+
+  .comparison-section h2 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    margin-top: 0;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .comparison-box {
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .comparison-box.oracle {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    border: 2px solid #667eea;
+  }
+
+  .comparison-box.copilot {
+    background: rgba(100, 100, 100, 0.1);
+    border: 2px solid rgba(100, 100, 100, 0.3);
+  }
+
+  .comparison-box h3 {
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+  }
+
+  .comparison-box.oracle h3 {
     color: #667eea;
   }
+
+  .comparison-box.copilot h3 {
+    color: #888;
+  }
+
+  .comparison-box p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95em;
+  }
+
+  .memory-display {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    min-height: 60px;
+  }
+
+  .memory-display .empty {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+  }
+
+  .memory-display ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .memory-display li {
+    color: #4ade80;
+    padding: 3px 0;
+    font-size: 0.9em;
+  }
+
+  /* Demo Area */
   .demo-area {
     background: #1a1a2e;
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
     margin: 30px 0;
   }
+
   .input-section {
     margin-bottom: 20px;
   }
+
   .input-section label {
     display: block;
     color: #eee;
     margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
   }
+
   .input-section input {
     width: 70%;
     padding: 12px;
-    border-radius: 6px;
-    border: none;
+    border-radius: 8px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     font-size: 16px;
   }
+
+  .input-section input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
   .input-section button {
     padding: 12px 24px;
-    background: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
   }
+
   .input-section button:hover {
-    background: #764ba2;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
   }
+
   .output-section h3 {
     color: #eee;
     margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
   }
+
   .output-section pre {
     background: #0f0f1a;
     color: #4ade80;
     padding: 20px;
     border-radius: 8px;
     min-height: 120px;
-    font-family: 'Consolas', monospace;
+    font-family: 'Consolas, Monaco, monospace';
+    border: 1px solid rgba(74, 222, 128, 0.2);
   }
+
+  /* Teaching Section */
+  .teaching-section {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+    padding: 25px;
+    border-radius: 16px;
+    margin: 30px 0;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .teaching-section h3 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    margin-top: 0;
+  }
+
+  .teach-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .teach-buttons button {
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #a78bfa 0%, #667eea 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .teach-buttons button:hover {
+    box-shadow: 0 4px 20px rgba(167, 139, 250, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .teach-hint {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+
+  /* Examples */
   .examples {
     margin: 30px 0;
   }
+
   .examples h3 {
-    color: #667eea;
+    color: #a78bfa;
+    font-family: 'Orbitron', sans-serif;
   }
+
   .example-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .example-buttons button {
     padding: 10px 16px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 6px;
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: white;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
+
   .example-buttons button:hover {
-    background: #e0e0e0;
+    background: rgba(102, 126, 234, 0.4);
   }
+
+  /* Note */
   .note {
-    background: #fef3c7;
+    background: rgba(251, 191, 36, 0.1);
     padding: 15px;
     border-radius: 8px;
     border-left: 4px solid #f59e0b;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .input-section input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .teach-buttons {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
