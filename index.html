@@ -1,0 +1,71 @@
+---
+layout: default
+---
+
+<div class="hero">
+  <h1>Oracle Playground</h1>
+  <p>เว็บไซต์ศึกษาและทดลอง Oracle — พร้อมเนื้อหาและ Interactive Demo</p>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>📚 เนื้อหา</h2>
+    <p>เรียนรู้พื้นฐาน Oracle ตั้งแต่ 0 จนใช้เป็น</p>
+    <a href="/oracle-playground/docs/" class="btn">เริ่มเรียน →</a>
+  </div>
+
+  <div class="card">
+    <h2>🎮 Playground</h2>
+    <p>ลองเล่นคำสั่ง Oracle ได้เลย — ไม่ต้องติดตั้ง</p>
+    <a href="/oracle-playground/playground/" class="btn">เล่นเลย →</a>
+  </div>
+
+  <div class="card">
+    <h2>💡 ตัวอย่าง</h2>
+    <p>Code examples และ use case จริง</p>
+    <a href="/oracle-playground/examples/" class="btn">ดูตัวอย่าง →</a>
+  </div>
+</div>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .card h2 {
+    margin-bottom: 10px;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .btn:hover {
+    background: #764ba2;
+  }
+</style>

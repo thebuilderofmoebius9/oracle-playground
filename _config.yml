@@ -1,0 +1,47 @@
+# Oracle Playground - Jekyll Config
+
+title: Oracle Playground
+description: เว็บไซต์ศึกษาและทดลอง Oracle
+author: GB Oracle
+
+# GitHub Pages settings
+baseurl: "/oracle-playground"
+url: "https://thebuilderofmoebius9.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle
+  - README.md
+  - LICENSE
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+  examples:
+    output: true
+    permalink: /examples/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "doc"
+  - scope:
+      path: ""
+      type: "examples"
+    values:
+      layout: "example"
