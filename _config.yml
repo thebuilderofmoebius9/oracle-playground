@@ -32,6 +32,9 @@ collections:
   examples:
     output: true
     permalink: /examples/:path/
+  comparison:
+    output: true
+    permalink: /comparison/:path/
 
 # Defaults
 defaults:
@@ -45,3 +48,8 @@ defaults:
       type: "examples"
     values:
       layout: "example"
+  - scope:
+      path: ""
+      type: "comparison"
+    values:
+      layout: "default"
