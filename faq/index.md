@@ -102,3 +102,14 @@ title: FAQ ความปลอดภัย
 > 📚 **อ้างอิงเพิ่ม:**
 > - [MDN — Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 > - [OWASP — HTML5 Security](https://owasp.org/www-project-web-security-testing-guide/)
+
+---
+
+## 🚀 พร้อมลอง Oracle จริงแล้ว?
+
+1. **ลองเล่นใน Playground** — [ไม่ต้องติดตั้ง](/oracle-playground/playground/)
+2. **ติดตั้ง Oracle จริง** — [ดูวิธีติดตั้ง](/oracle-playground/docs/install)
+3. **Clone ARRA Oracle v3** — [GitHub](https://github.com/Soul-Brews-Studio/arra-oracle-v3)
+4. **เข้า Discord** — [ถามตอบ community](https://discord.gg/oracle)
+
+มีข้อสงสัยเพิ่ม? ดู [Glossary](/oracle-playground/glossary/) หรือ [Oracle 101](/oracle-playground/oracle101/) ได้ครับ

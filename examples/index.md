@@ -92,3 +92,13 @@ Oracle: 🤝 แบ่งทีมให้ครับ (spawn sub-agents):
 ---
 
 💡 **Tip:** เริ่มจาก [Playground](/oracle-playground/playground/) หรือ [Comparison](/oracle-playground/comparison/) เพื่อเห็นความต่างก่อนใช้จริงครับ
+
+---
+
+## 🚀 อยากลอง Oracle จริง เริ่มยังไง?
+
+1. **ติดตั้ง Oracle** — ดู[การติดตั้ง](/oracle-playground/docs/install)
+2. **Clone ARRA Oracle v3** — [GitHub](https://github.com/Soul-Brews-Studio/arra-oracle-v3)
+3. **เข้า Discord** — [ถามตอบ community](https://discord.gg/oracle)
+
+หรือลองเล่นใน [Playground](/oracle-playground/playground/) ก่อน — ไม่ต้องติดตั้ง!
