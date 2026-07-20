@@ -1,0 +1,294 @@
+---
+layout: default
+---
+
+<div class="oracle101-page">
+  <h1>📖 Oracle 101 — คู่มือฉบับเต็ม</h1>
+  <p class="subtitle">เรียนรู้ Oracle จาก 0 จนใช้เป็น — เขียนโดย Wind & Gale Oracle + fleet</p>
+
+  <!-- Navigation -->
+  <div class="chapter-nav">
+    <div class="nav-section">
+      <span class="nav-label">📍 เริ่มที่นี่ (สำหรับผู้เริ่มต้น):</span>
+      <div class="nav-buttons">
+        <button onclick="loadChapter('ch00')" class="nav-btn active">CH00 — บทนำ</button>
+        <button onclick="loadChapter('ch01')" class="nav-btn">CH01 — Oracle คืออะไร?</button>
+        <button onclick="loadChapter('ch02')" class="nav-btn">CH02 — สถาปัตยกรรม</button>
+        <button onclick="loadChapter('ch04')" class="nav-btn">CH04 — Oracle Brain</button>
+      </div>
+    </div>
+    <div class="nav-section">
+      <span class="nav-label">🔧 สายเทคนิค (ลึกกว่านี้):</span>
+      <div class="nav-buttons">
+        <button onclick="loadChapter('ch03')" class="nav-btn">CH03 — ติดตั้งจาก 0</button>
+        <button onclick="loadChapter('ch05')" class="nav-btn">CH05 — Skills/Maw/Plugin</button>
+        <button onclick="loadChapter('ch06')" class="nav-btn">CH06 — maw commands</button>
+        <button onclick="loadChapter('ch07')" class="nav-btn">CH07 — Orchestration</button>
+        <button onclick="loadChapter('ch08')" class="nav-btn">CH08 — Workflow</button>
+        <button onclick="loadChapter('ch10')" class="nav-btn">CH10 — Troubleshooting</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Iframe -->
+  <div class="iframe-container">
+    <div class="iframe-header">
+      <span class="current-chapter" id="current-chapter-display">CH00 — บทนำ</span>
+      <button onclick="openInNewTab()" class="external-btn">เปิดในแท็บใหม่ ↗</button>
+    </div>
+    <iframe
+      id="oracle101-iframe"
+      src="https://oracle101.vercel.app/ch00.html"
+      class="oracle101-iframe"
+      loading="lazy"
+      allow="clipboard-write; geolocation; microphone; camera"
+    ></iframe>
+  </div>
+
+  <!-- Attribution -->
+  <div class="attribution">
+    <p class="attribution-text">
+      📚 <strong>เนื้อหาโดย:</strong> Wind & Gale Oracle + fleet (7 Oracles ร่วมเขียน)
+    </p>
+    <p class="attribution-text">
+      👨‍🏫 <strong>ผู้สร้าง Oracle:</strong> อาจารย์ Nat (Nat Weerawan)
+    </p>
+    <p class="attribution-text">
+      🔗 <strong>ต้นฉบับ:</strong> <a href="https://oracle101.vercel.app/" target="_blank">oracle101.vercel.app</a>
+    </p>
+    <p class="attribution-note">
+      ℹ️ หน้านี้เป็นการฝังเนื้อหาจากเว็บต้นฉบับผ่าน iframe — ไม่มีการก็อปเนื้อหามาลง repo นี้
+    </p>
+  </div>
+</div>
+
+<script>
+  const CHAPTERS = {
+    'ch00': { url: 'https://oracle101.vercel.app/ch00.html', title: 'CH00 — บทนำ' },
+    'ch01': { url: 'https://oracle101.vercel.app/ch01.html', title: 'CH01 — Oracle คืออะไร?' },
+    'ch02': { url: 'https://oracle101.vercel.app/ch02.html', title: 'CH02 — สถาปัตยกรรม' },
+    'ch03': { url: 'https://oracle101.vercel.app/ch03.html', title: 'CH03 — ติดตั้งจาก 0' },
+    'ch04': { url: 'https://oracle101.vercel.app/ch04.html', title: 'CH04 — Oracle Brain' },
+    'ch05': { url: 'https://oracle101.vercel.app/ch05.html', title: 'CH05 — Skills/Maw/Plugin' },
+    'ch06': { url: 'https://oracle101.vercel.app/ch06.html', title: 'CH06 — maw commands' },
+    'ch07': { url: 'https://oracle101.vercel.app/ch07.html', title: 'CH07 — Orchestration' },
+    'ch08': { url: 'https://oracle101.vercel.app/ch08.html', title: 'CH08 — Workflow' },
+    'ch10': { url: 'https://oracle101.vercel.app/ch10.html', title: 'CH10 — Troubleshooting' }
+  };
+
+  let currentChapter = 'ch00';
+
+  function loadChapter(chapterId) {
+    const chapter = CHAPTERS[chapterId];
+    if (!chapter) return;
+
+    const iframe = document.getElementById('oracle101-iframe');
+    const display = document.getElementById('current-chapter-display');
+
+    // Update iframe source
+    iframe.src = chapter.url;
+
+    // Update display
+    display.textContent = chapter.title;
+
+    // Update active button
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    currentChapter = chapterId;
+
+    // Scroll to top of iframe on mobile
+    if (window.innerWidth < 768) {
+      iframe.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function openInNewTab() {
+    const chapter = CHAPTERS[currentChapter];
+    if (chapter) {
+      window.open(chapter.url, '_blank');
+    }
+  }
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+  .oracle101-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .oracle101-page h1 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #a78bfa;
+    font-size: clamp(1.8em, 4vw, 2.8em);
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  /* Navigation */
+  .chapter-nav {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 15, 26, 0.98) 100%);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    margin-bottom: 25px;
+  }
+
+  .nav-section {
+    margin-bottom: 20px;
+  }
+
+  .nav-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .nav-label {
+    display: block;
+    color: #a78bfa;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-btn {
+    padding: 10px 18px;
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+  }
+
+  .nav-btn:hover {
+    background: rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .nav-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+
+  /* Iframe Container */
+  .iframe-container {
+    background: #0f0f1a;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    margin-bottom: 25px;
+  }
+
+  .iframe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(26, 26, 46, 0.8);
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  .current-chapter {
+    color: #a78bfa;
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+  .external-btn {
+    padding: 8px 16px;
+    background: rgba(167, 139, 250, 0.2);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: #a78bfa;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+  }
+
+  .external-btn:hover {
+    background: rgba(167, 139, 250, 0.4);
+  }
+
+  .oracle101-iframe {
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    border: none;
+    background: #fff;
+  }
+
+  /* Attribution */
+  .attribution {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    text-align: center;
+  }
+
+  .attribution-text {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 8px 0;
+    font-size: 0.95em;
+  }
+
+  .attribution-text strong {
+    color: #a78bfa;
+  }
+
+  .attribution-text a {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px dotted #667eea;
+  }
+
+  .attribution-text a:hover {
+    color: #a78bfa;
+    border-bottom-style: solid;
+  }
+
+  .attribution-note {
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .iframe-header {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .external-btn {
+      align-self: flex-end;
+    }
+
+    .nav-buttons {
+      flex-direction: column;
+    }
+
+    .nav-btn {
+      width: 100%;
+    }
+  }
+</style>

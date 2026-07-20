@@ -35,6 +35,15 @@ collections:
   comparison:
     output: true
     permalink: /comparison/:path/
+  oracle101:
+    output: true
+    permalink: /oracle101/:path/
+  faq:
+    output: true
+    permalink: /faq/:path/
+  glossary:
+    output: true
+    permalink: /glossary/:path/
 
 # Defaults
 defaults:
@@ -53,3 +62,18 @@ defaults:
       type: "comparison"
     values:
       layout: "default"
+  - scope:
+      path: ""
+      type: "oracle101"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "faq"
+    values:
+      layout: "doc"
+  - scope:
+      path: ""
+      type: "glossary"
+    values:
+      layout: "doc"
