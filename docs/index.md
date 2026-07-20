@@ -20,7 +20,8 @@ title: เนื้อหา
 ## 🎮 ลองเล่น
 
 - [Playground](/oracle-playground/playground/) — ทดลองคำสั่ง Oracle ได้เลย
-- [ตัวอย่าง](/oracle-playground/examples/) — Use cases จริง
+- [Comparison](/oracle-playground/comparison/) — เทียบ Copilot vs Oracle ด้วยตา
+- [ตัวอย่าง](/oracle-playground/examples/) — Use cases จริง (สาย marine)
 
 ---
 
