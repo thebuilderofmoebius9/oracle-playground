@@ -48,7 +48,7 @@ layout: default
       <button onclick="teachOracle('name')">สอนชื่อฉัน: มิ่งขวัญ</button>
       <button onclick="teachOracle('role')">สอนว่าฉันคือ: Developer</button>
       <button onclick="teachOracle('pref')">สอนว่าฉันชอบ: Vim ไม่ใช่ Nano</button>
-      <button onclick="teachOracle('project')">สอนโปรเจกต์: gb-oracle</button>
+      <button onclick="teachOracle('project')">สอนโปรเจกต์: my-project</button>
     </div>
     <p class="teach-hint">💡 ลองกดหลายรอบ — Oracle จะสะสมความทรงจำ!</p>
   </div>
@@ -195,10 +195,10 @@ Oracle จำได้ทุกรายละเอียด!`;
         message = '✅ Oracle จำว่าคุณชอบ Vim ไม่ชอบ Nano แล้ว!';
         break;
       case 'project':
-        if (!oracleMemory.projects.includes('gb-oracle')) {
-          oracleMemory.projects.push('gb-oracle');
+        if (!oracleMemory.projects.includes('my-project')) {
+          oracleMemory.projects.push('my-project');
         }
-        message = '✅ Oracle จำโปรเจกต์ "gb-oracle" แล้ว!';
+        message = '✅ Oracle จำโปรเจกต์ "my-project" แล้ว!';
         break;
     }
 
